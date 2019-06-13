@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="./css/Chart.min.css">
+        <title>Sensible</title>
+        <script src="./js/Chart.js"></script>
+        <script src="./js/Chart.bundle.js"></script>
+        <script src="./js/utils.js"></script>
+    </head>
+    <body>
+        <header class="flexible" id="heading">
+            <div id="logo" class="flexible">
+                LOGO Place
+            </div>
+            <div id="profile" class="flexible">
+                Profile
+            </div>
+        </header>
+        <nav>
+            <div id="sideNav">
+                <a href="./index.html"><div id="nav1" class="flexible navMenu">홈</div></a>
+				<a href="./cardboard.html"><div id="nav2" class="flexible navMenu">카드보드</div></a>
+				<a href="./analistic.html"><div id="nav3" class="flexible navMenu">데이터 분석</div></a>
+                <a href="./management.html"><div id="nav4" class="flexible navMenu">데이터 관리</div></a>
+            </div>
+        </nav>
+        <div id="board">
+            <div id="board1">
+                <canvas id="canvas" height="190px;"></canvas>          
+			</div>
+			<div id="board2">
+                <canvas id="canvas2" height="190px;"></canvas>          
+            </div>
+        </div>
+    </body>
+    <script>
+        var date = ['6/5', '6/6', '6/7', '6/8', '6/9', '6/10', '6/11', '6/12', '6/13', '6/14', '6/15'];
+		var config = {
+			type: 'line',
+			data: {
+				labels: date,
+				datasets: [{
+					label: '습도 센서',
+					backgroundColor: window.chartColors.red,
+					borderColor: window.chartColors.red,
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor()
+					],
+					fill: false,
+				}, {
+					label: '온도 센서',
+					fill: false,
+					backgroundColor: window.chartColors.blue,
+					borderColor: window.chartColors.blue,
+					data: [
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor(),
+						randomScalingFactor()
+					],
+				}]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Arduino DHT Sensor'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Value'
+						}
+					}]
+				}
+			}
+        };
+        
+        window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+			var ctx = document.getElementById('canvas2').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+    </script>
+</html>

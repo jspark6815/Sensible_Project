@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css?family=Jua|Noto+Sans+KR:400,500,900&display=swap');
+body {
+    margin: 0 0;
+    overflow-y: hidden;
+    background-color: #F5F7FB;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.flexible {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+}
+#logo > img {
+    margin-left: 30px;
+    margin-top: 20px;
+    width: 140px;
+}
+nav {
+    top: 0;
+    height: 100vh;
+    width: 15vw;
+    position: absolute;
+    background-color: #58A193;
+}
+#sideNav {
+    font-family: 'Jua';
+    padding-top: 20px;
+}
+.navMenu {
+    padding-left: 30px;
+    width: calc(100% - 30px);
+    height: 6vh;
+    font-size: 1.5vw;
+}
+.navMenu:hover {
+    background-color: #6AA99F;
+}
+#topBar {
+    margin-left: 15vw;
+    height: 80px;
+    font-size:30px;
+}
+#title {
+    margin-left: 30px;
+    font-family: 'Noto Sans KR';
+    font-weight: 900;
+    color: #465874;
+    font-size: 30px;
+}
+#title > span {
+    font-weight: 400;
+}
+#notification {
+    position: absolute;
+    right:220px;
+    color:#465874;
+    font-size: 40px;
+}
+#profile {
+    position: absolute;
+    font-size: 34px;
+    right: 30px;
+    font-weight: 500;
+    font-family: 'Noto Sans KR';
+    color:#33445e;
+}
+#profileImage {
+    width: 45px;
+    height: 45px;
+    margin-right: 15px;
+    background-image: url('../assets/profile.jpg');
+    border-radius: 50%;
+    background-size: 60px 60px;
+    background-position: 50% 50%;
+    border: 2px solid #a2bee9;
+}
+#board {
+    margin-left: 15vw;
+}
+.card {
+    position: relative;
+    margin: 0 30px 30px;
+    border-radius: 10px;
+    width: 500px;
+    background-color: white;
+    box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.11);
+}
