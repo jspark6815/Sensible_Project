@@ -1,4 +1,7 @@
-var date = ['6/5', '6/6', '6/7', '6/8', '6/9', '6/10', '6/11', '6/12', '6/13', '6/14', '6/15'];
+var date = ['6/5', '6/6', '6/7', '6/8', '6/9', '6/10', '6/11', '6/12', '6/13', '6/14'];
+function radomizedData(min, max) {
+    return Math.round(Math.random() * (max + 1 - min) + min);
+}
 var config = {
     type: 'line',
     data: {
@@ -48,14 +51,6 @@ var config = {
         tooltips: {
             mode: 'index',
             intersect: false,
-        },
-        layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 10,
-                bottom: 10
-            }
         },
         hover: {
             mode: 'nearest',
@@ -112,13 +107,60 @@ var config2 = {
             mode: 'index',
             intersect: false,
         },
-        layout: {
-            padding: {
-                left: 10,
-                right: 10,
-                top: 10,
-                bottom: 10
-            }
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Date'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Value'
+                }
+            }]
+        }
+    }
+};
+var config3 = {
+    type: 'line',
+    data: {
+        labels: date,
+        datasets: [{
+            label: '수위 센서',
+            backgroundColor: window.chartColors.yellow,
+            borderColor: window.chartColors.yellow,
+            data: [
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100),
+                radomizedData(0, 100)
+            ],
+            fill: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'Arduino Liquid Levels Switch'
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: false,
         },
         hover: {
             mode: 'nearest',
@@ -147,16 +189,22 @@ window.onload = function() {
     window.myLine = new Chart(ctx, config);
     var ctx = document.getElementById('canvas2').getContext('2d');
     window.myLine2 = new Chart(ctx, config2);
+    var ctx = document.getElementById('canvas3').getContext('2d');
+    window.myLine3 = new Chart(ctx, config3);
+    var ctx = document.getElementById('canvas4').getContext('2d');
+    window.myLine4 = new Chart(ctx, config);
+    var ctx = document.getElementById('canvas5').getContext('2d');
+    window.myLine5 = new Chart(ctx, config2);
 };
-document.getElementById('addData').addEventListener('click', function() {
-    if (config.data.datasets.length > 0) {
-        var month = date[config.data.labels.length % date.length];
-        config2.data.labels.push(month);
+// document.getElementById('addData').addEventListener('click', function() {
+//     if (config.data.datasets.length > 0) {
+//         var month = date[config.data.labels.length % date.length];
+//         config2.data.labels.push(month);
 
-        config.data.datasets.forEach(function(dataset) {
-            dataset.data.push(randomScalingFactor());
-        });
+//         config.data.datasets.forEach(function(dataset) {
+//             dataset.data.push(randomScalingFactor());
+//         });
 
-        window.myLine.update();
-    }
-});
+//         window.myLine.update();
+//     }
+// });
