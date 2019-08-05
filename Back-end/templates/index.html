@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Sensible Project</title>
-        <link rel="stylesheet" href="./css/index.css">
-        <script src="./js/scrollreveal.js"></script>   
-        <script src="./js/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <script src="{{ url_for('static', filename='js/scrollreveal.js') }}"></script>   
+        <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
         <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>  
         <script>
             function move(ele) {
@@ -30,7 +30,7 @@
     <body>
         <div id="nav" class="flexible">
             <div id="logo" draggable="false">
-                <img src="./assets/logo.png">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}">
             </div>
             <div id="slider">
                 <a onclick="move('main');"><span>Main</span></a>
@@ -41,11 +41,11 @@
 		<div id="main">
             <div id="contents" class="flexible">
                 <div id="mention">코드 두 줄로 <br>아두이노 데이터를 서버로<br>
-                <a href="./cardboard.html" id="startBtn">
+                <a href="./cardboard" id="startBtn">
                     <div>시작하기</div>
                 </a>
             </div>
-                <img id="sampleCode" draggable="false" src="./assets/carbon.svg">
+                <img id="sampleCode" draggable="false" src="{{ url_for('static', filename='assets/carbon.svg') }}">
             </div>
         </div>
         <div id="introduction" class="flexible">
@@ -64,16 +64,16 @@
                         <div id="detailExp">수집할 시간을 선택하여 더 효율적인 관리를 할 수 있습니다.</div>
                     </div>
                 </div>
-                <img id="graph" src="./assets/graph.png">
+                <img id="graph" src="{{ url_for('static', filename='assets/graph.png') }}">
             </div>
         </div>
         <div id="management" class="flexible">
             <div id="contents3" class="flexible">
                 <div id="imageBox" class="grid">
-                    <img id="card1" src="./assets/card1.png">
-                    <img id="card2" src="./assets/card2.png">
-                    <img id="card3" src="./assets/card3.png">
-                    <img id="card4" src="./assets/addCard.png">
+                    <img id="card1" src="{{ url_for('static', filename='assets/card1.png') }}">
+                    <img id="card2" src="{{ url_for('static', filename='assets/card2.png') }}">
+                    <img id="card3" src="{{ url_for('static', filename='assets/card3.png') }}">
+                    <img id="card4" src="{{ url_for('static', filename='assets/addCard.png') }}">
                 </div>
                 <div id="rightMention" class="flexible">
                     <div id="introMention2">
