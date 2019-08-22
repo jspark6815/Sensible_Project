@@ -1,12 +1,10 @@
 from flask import Flask, jsonify, render_template
 from subprocess import call
-from flask_socketio import SocketIO, send
 from flask import Flask, url_for
+from pymongo import MongoClient
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = "devJS"
-
-socket_io = SocketIO(app)
 
 @app.route('/')
 
@@ -21,9 +19,15 @@ def cardBoard():
 def managementWeb():
     return render_template('management.html')
 
+@app.route('/mongo', methods=['GET','POST'])
+def mongoTest():
+    client = MongoClient('mongodb://202.182.112.20:27017/')
+    db = client.sensible
+    collection = db.cardboard
+    results = collection.find()
+    client.close()
+    return render_template('mongo.html', data=results)
+
 
 if __name__ == '__main__':
-    socket_io.run(app, debug=True, port=8000)
-
-
-print("Server ON")
+    app.run(debug=True, port=8000)

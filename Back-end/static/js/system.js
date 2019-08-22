@@ -2,9 +2,6 @@ var card_num = 1;
 if(location.href.indexOf('cardboard') != -1) {
     document.getElementById('board').style.width = "calc(500px * "+Math.round(card_num/2)+" + 60px * "+Math.round(card_num/2)+")";
 }
-else if(location.href.indexOf('management') != -1) {
-    document.getElementById('board').style.width = "calc(240px * "+Math.round((card_num+1)/2)+" + 60px * "+Math.round((card_num+1)/2)+")";
-}
 
 for(i=1;i<=card_num;i++) {
     document.getElementById('code'+i).value = String(CryptoJS.SHA512('code'+i)).substring(0,10);
@@ -33,7 +30,7 @@ function addCard() {
     var div = document.createElement('div');
     div.setAttribute('id', 'sensor'+card_num);
     div.setAttribute('class', 'sensorCard flexible');
-    div.innerHTML = document.getElementById('sensor1').innerHTML;
+    div.innerHTML = document.getElementById('sensor_sample').innerHTML;
     div.childNodes[5].childNodes[1].setAttribute('id', 'code'+card_num);
     div.childNodes[3].childNodes[1].setAttribute('name','cycle'+card_num);
     div.childNodes[7].childNodes[1].setAttribute('onclick',"eliminateCard(document.getElementById('code"+card_num+"').value)")

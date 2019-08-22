@@ -7,9 +7,11 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/Chart.min.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
         <title>Sensible</title>
-        <script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/Chart.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/Chart.bundle.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/management.js') }}"></script>
     </head>
     <body>
 		<nav>
@@ -32,11 +34,11 @@
 				</div>
 			</div>
 			<div id="board" class="flexible">
-				<div id="sensor1" class="sensorCard flexible">
+				<div id="sensor_sample" style="display: none;" class="sensorCard flexible">
 					<input type="text" class="cardName">
 					<div class="cycle">
 						Display Cycle :  
-						<select name="cycle1" class="cycleSelect">
+						<select name="cycle" class="cycleSelect">
 							<option value="">1m</option>
 							<option value="">1h</option>
 							<option value="">1day</option>
@@ -44,11 +46,11 @@
 					</div>
 					<div class="private">
 						Private Code : 
-						<input type="text" class="privateCode" id="code1" disabled>
+						<input type="text" class="privateCode" id="code" disabled>
 					</div>
 					<div class="btn flexible">
-						<button class="eliminate flexible" onclick="eliminateCard(document.getElementById('code1').value)">Eliminate</button>
-						<button class="save flexible" onclick="saveCard(document.getElementById('code1').value)">Save</button>
+						<button class="eliminate flexible" onclick="eliminateCard(document.getElementById('code').value)">Eliminate</button>
+						<button class="save flexible" onclick="saveCard(document.getElementById('code').value)">Save</button>
 					</div>
 				</div>
 				<div id="addCard" class="sensorCard flexible" onclick="addCard()">
